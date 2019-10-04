@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    <title>Dad Joke</title>
+  </head>
+  <body class='text-white bg-dark'>
+
+    <div id="body-container" class="container-fluid w-100">
+    <div id="body-content" class="container-fluid w-80 border">
+
+    <p><h1>Random Dad Joke</h2>
+    <p>
+    <h5>Joke setup</h2>
+    <h2 id="jokeSetup">Setup</h1>
+
+    <br>
+    <p>
+    <h5>Joke Punchline</h2>
+    <h2 id="jokePunchline">Punchline</h1>
+
+    <p>
+    <br>
+    <button id="new_joke_btn" type="button" class="btn btn-primary">Get New Joke</button>
+    <a class="btn btn-success" href="/add_joke.html" role="button">Suggest a Joke</a>
+
+
+
+    </div>
+    </div>
+    <br>
+    <a class="btn btn-sm btn-secondary" href="#" role="button">admin</a>
+    <!-- JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script>
+      $(document).ready(function(){
+        console.log("in js...\n");
+         get_joke();
+      });
+
+
+      function get_joke(){
+        $.ajax({
+          async: true,
+          type: 'GET',
+          // This is the type of data you're expecting back from the server.
+          dataType: 'json',
+          url: '/api/get_joke',
+          success: function (joke_json){
+            console.log('ajax success...\n');
+            console.log(joke_json);
+            $('#jokeSetup').html(joke_json.data.SETUP);
+            $('#jokePunchline').html(joke_json.data.PUNCHLINE);
+          },
+          failure: (e)=>{console.log('ajax failed..\n');console.log(e);}
+        }
+        );
+      }
+
+    </script>
+  </body>
+</html>

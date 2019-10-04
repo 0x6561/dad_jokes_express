@@ -37,7 +37,7 @@ app.get('/', function( req, res, next) {
 );
 
 /* GET joke. */
-app.get('/get_joke', function( req, res, next) {
+app.get('/api/get_joke', function( req, res, next) {
   console.log(req.body);
   //const sql = 'SELECT * FROM DAD_JOKES WHERE ID IN (SELECT ID FROM DAD_JOKES ORDER BY RANDOM() LIMIT 1)';
   let sql = 'SELECT * FROM DAD_JOKES';
@@ -66,18 +66,13 @@ app.post("/api/add_joke",
       if (!errors.isEmpty()) {
           return res.status(422).json({ errors: errors.array() });
         }
-
-  //console.log(req.body);
   //const sql = 'SELECT * FROM DAD_JOKES WHERE ID IN (SELECT ID FROM DAD_JOKES ORDER BY RANDOM() LIMIT 1)';
   let sql = 'INSERT INTO DAD_JOKES (SUBMITER, SETUP, PUNCHLINE, ENABLED, DATE, VIEWS, RATING ) VALUES (?, ?, ?, ?, ?, ?, ?)';
   var date = new Date();
-  // let setup = req.params.setup;
   let name = req.body.name;
   let setup = req.body.jokeSetup;
-  //let punchline = req.params.punchline;
   let punchline = req.body.jokePunchline;
   let params = [name, setup, punchline, 'false', date, 0, 0];
-  console.log(params);
 
   let db = require('./Joke_db').initDB();
   db.get(sql, params, (err, row) => {

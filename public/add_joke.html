@@ -11,41 +11,46 @@
     <title>Submit a Joke</title>
   </head>
   <body class='text-white bg-dark'>
+    <div id="body-container" class="container-fluid w-100">
+      <div id="body-content" class="container-fluid w-75 ">
 
-    <p><h2> Here you can share your favorite 'Dad Joke'.</h2>
-    <form id="send_joke_form" action="/api/add_joke" method="POST" >
-      <div class="form-col border">
+        <p><h2> Here you can share your favorite 'Dad Joke'.</h2>
+        <form id="send_joke_form" action="/api/add_joke" method="POST" >
+          <div class="form-col">
 
-        <div class="row-3 mb-3">
-          <label for="name"> Your Name </label>
-          <input type="text" class="form-control" id="name" name="name" autofocus placeholder="name" value="name"> <!--pattern="^[a-zA-Z0-9.?,;-]*$"> -->
-           *optional
-        </div>
+            <div class="row-3 mb-3">
+              <label for="name"> Your Name </label>
+              <input type="text" class="form-control" id="name" name="name" autofocus placeholder="name" value="name"> <!--pattern="^[a-zA-Z0-9.?,;-]*$"> -->
+              *optional
+            </div>
 
-        <div class="row-3 mb-3">
-          <label for="jokeSetup">Joke Setup</label>
-          <textarea rows="3" cols="50" class="form-control" id="jokeSetup" name="jokeSetup" required >
-            Why did the chicken cross the road?
-          </textarea>
-        </div>
+            <div class="row-3 mb-3">
+              <label for="jokeSetup">Joke Setup</label>
+              <textarea rows="3" cols="50" class="form-control" id="jokeSetup" name="jokeSetup" required >
+                Why did the chicken cross the road?
+              </textarea>
+            </div>
 
-        <div class="row-3 mb-3">
-          <label for="jokePunchline">Punchline</label>
-          <textarea rows="3" cols="50" class="form-control" id="jokePunchline" name="jokePunchline" required >
-            To get to the other side
-          </textarea>
-        </div>
+            <div class="row-3 mb-3">
+              <label for="jokePunchline">Punchline</label>
+              <textarea rows="3" cols="50" class="form-control" id="jokePunchline" name="jokePunchline" required >
+                To get to the other side
+              </textarea>
+            </div>
 
-        <!-- <button class="btn btn-primary" type="submit">Submit Joke</button> -->
-      <input type="submit" value="Send Joke!">
+            <!-- <button class="btn btn-primary" type="submit">Submit Joke</button> -->
+            <input class="btn btn-primary" type="submit" value="Send Joke!">
+            <a class="btn btn-success" href="/see_joke.html" role="button">See a Joke</a>
 
+          </div>
       </div>
-    </form>
+    </div>
+        </form>
 
-    <!-- JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/js/jquery-3.4.1.js"></script>
-    <script src="/js/popper.js"></script>
-    <script src="/js/bootstrap.js"></script>
+        <!-- JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="/js/jquery-3.4.1.js"></script>
+        <script src="/js/popper.js"></script>
+        <script src="/js/bootstrap.js"></script>
   </body>
 </html>
