@@ -1,0 +1,36 @@
+app.post("/add_joke", (req, res, next) => {
+  console.log(req.body);
+  //const sql = 'SELECT * FROM DAD_JOKES WHERE ID IN (SELECT ID FROM DAD_JOKES ORDER BY RANDOM() LIMIT 1)';
+  let sql = 'INSERT INTO DAD_JOKES (ID, SETUP, PUNCHLINE, ENABLED, DATE, VIEWS, RATING ) VALUES (NULL, ?, ?, ?, ?, ?, ?)';
+  var date = new Date();
+  let setup = req.params.setup;
+  let punchline = req.params.punchline;
+  var params = [setup, punchline, 'false', date, 0, 0];
+  db.get(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({"error":err.message});
+      return;
+    }
+    res.json({
+      "message":"success",
+      "data":row
+    })
+  });
+});
+
+app.get("/get_", (req, res, next) => {
+  console.log(req.body);
+  //const sql = 'SELECT * FROM DAD_JOKES WHERE ID IN (SELECT ID FROM DAD_JOKES ORDER BY RANDOM() LIMIT 1)';
+  let sql = 'SELECT * FROM DAD_JOKES WHERE ID = 99';
+  var params = [req.params.id]
+  db.get(sql, params, (err, row) => {
+    if (err) {
+      res.status(400).json({"error":err.message});
+      return;
+    }
+    res.json({
+      "message":"success",
+      "data":row
+    })
+  });
+});

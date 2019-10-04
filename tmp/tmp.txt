@@ -1,0 +1,6 @@
+hello node !hello node !
+hello {user.username}!
+hello me!
+hello me!
+hello me!
+hello me!
